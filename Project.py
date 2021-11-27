@@ -58,7 +58,7 @@ bfs(visited, tree, root)
 '''
 
 
-# Start Best First Search
+# Start A* Search
 
 def h(node):
     # count the number of r's on the left side of the leftmost g
