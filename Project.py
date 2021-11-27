@@ -75,7 +75,7 @@ def h(node):
             gCount += 1
         else:
             pass
-    return node.cost+numOfRMisplaced
+    return node.cost + numOfRMisplaced
 
 
 def aStarSearch(node):
@@ -92,17 +92,17 @@ def aStarSearch(node):
             if x[1] < lowestChoice[1]:
                 lowestChoice = x
         if lowestChoice[0].isGoal():
+            print("Shortest Path: "+str(pathToGoal(lowestChoice[0], "")))
             return lowestChoice[0].value + " SUCCESS"
 
         # Expand the lowest choice node and add each successor to the open list and close that node, step 4
-        # it isnt necessary to check if the node is already in CLOSED as the formation of our tree already
-        #       clips any redundant branches
+        CLOSED.append(lowestChoice)
         OPEN.remove(lowestChoice)
         for n in tree[lowestChoice[0]]:
-            OPEN.append((n, h(n)))
+            if n not in OPEN and n not in CLOSED:
+                OPEN.append((n, h(n)))
 
         print(lowestChoice[0].value)
-
     # return to step 2 if list not empty and goal not found
     return 'FAILURE'
 
