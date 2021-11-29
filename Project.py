@@ -32,33 +32,7 @@ def pathToGoal(node, arr):
     arr += " -> " + node.value
     return arr
 
-
-# Start BFS
-'''
-visited = []
-queue = []
-
-
-def bfs(visited, tree, node):
-    visited.append(node)
-    queue.append(node)
-
-    while queue:
-        curr = queue.pop(0)
-        if curr.isGoal():
-            print("\nLevel Found: " + str(curr.level) + " Total Cost: " + str(curr.totalCost) + " State: " + curr.value)
-            print("Path from root: " + str(pathToGoal(curr, "")), end="\n\n")
-        for neighbor in tree[curr]:
-            if neighbor not in visited:
-                visited.append(neighbor)
-                queue.append(neighbor)
-
-
-bfs(visited, tree, root)
-'''
-
-
-# Start A* Search
+# Start Best First Search
 
 def h(node):
     # count the number of r's on the left side of the leftmost g
@@ -102,9 +76,9 @@ def aStarSearch(node):
             if n not in OPEN and n not in CLOSED:
                 OPEN.append((n, h(n)))
 
-        print(lowestChoice[0].value)
+
     # return to step 2 if list not empty and goal not found
     return 'FAILURE'
 
 
-print(aStarSearch(root))
+aStarSearch(root)
